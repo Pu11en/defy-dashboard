@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🤖 Defy's Skills - Full Overview</title>
+  <title>🤖 Defy's Core Skills</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -13,9 +13,9 @@
       --border: rgba(255,255,255,0.1);
       --text: #e4e4e7;
       --text-dim: #71717a;
-      --ready: #22c55e;
-      --missing: #ef4444;
-      --accent: #22d3ee;
+      --accent-cyan: #22d3ee;
+      --accent-purple: #a78bfa;
+      --accent-green: #22c55e;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -26,311 +26,186 @@
       padding: 20px;
       background-image: radial-gradient(ellipse at 30% 0%, rgba(34,211,238,0.1) 0%, transparent 50%);
     }
-    .container { max-width: 900px; margin: 0 auto; }
+    .container { max-width: 800px; margin: 0 auto; }
     h1 {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 8px;
-      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .subtitle { text-align: center; color: var(--text-dim); margin-bottom: 30px; }
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    .stat { text-align: center; }
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 700;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .stat-number.ready { color: var(--ready); }
-    .stat-number.missing { color: var(--missing); }
-    .stat-label { color: var(--text-dim); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; }
     
-    .section { margin-bottom: 30px; }
+    .section { margin-bottom: 35px; }
     .section-title {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 15px;
       display: flex;
       align-items: center;
       gap: 10px;
-    }
-    .section-title .count {
-      background: var(--surface-elevated);
-      padding: 2px 10px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-cyan);
     }
     
     .skill-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
     }
     .skill-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+      border-radius: 12px;
+      padding: 16px;
+      transition: all 0.2s;
     }
-    .skill-card.ready { border-left: 3px solid var(--ready); }
-    .skill-card.missing { border-left: 3px solid var(--missing); opacity: 0.6; }
-    .skill-icon { font-size: 1.3rem; }
-    .skill-info { flex: 1; }
+    .skill-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+    .skill-icon { font-size: 1.5rem; margin-bottom: 8px; }
     .skill-name {
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1rem;
       margin-bottom: 4px;
     }
     .skill-desc {
       font-size: 0.75rem;
       color: var(--text-dim);
       line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
-    .skill-status {
-      font-size: 0.65rem;
-      padding: 2px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-top: 8px;
-      display: inline-block;
-    }
-    .skill-status.ready { background: rgba(34,197,94,0.2); color: var(--ready); }
-    .skill-status.missing { background: rgba(239,68,68,0.2); color: var(--missing); }
     
-    .footer { text-align: center; margin-top: 50px; padding: 20px; color: var(--text-dim); font-size: 0.85rem; }
+    .other-skills {
+      margin-top: 30px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .other-skills h3 {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+    .other-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .other-tag {
+      background: var(--surface-elevated);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    
+    .footer { text-align: center; margin-top: 40px; color: var(--text-dim); font-size: 0.85rem; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>🤖 Defy's Skills</h1>
-    <p class="subtitle">Your AI assistant's full capability matrix</p>
-    
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-number ready">15</div>
-        <div class="stat-label">Ready to Use</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number missing">41</div>
-        <div class="stat-label">Available to Install</div>
-      </div>
-    </div>
+    <h1>🤖 Defy's Core Skills</h1>
+    <p class="subtitle">What I use to build your AI agency</p>
     
     <div class="section">
-      <h2 class="section-title">✅ Ready to Use <span class="count">15</span></h2>
+      <h2 class="section-title">🐙 GitHub & Repo Ops</h2>
       <div class="skill-grid">
-        <div class="skill-card ready">
-          <div class="skill-icon">📦</div>
-          <div class="skill-info">
-            <div class="skill-name">clawhub</div>
-            <div class="skill-desc">Search, install, update skills from clawhub.com</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">🧩</div>
-          <div class="skill-info">
-            <div class="skill-name">coding-agent</div>
-            <div class="skill-desc">Run Claude Code programmatically</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
+        <div class="skill-card">
           <div class="skill-icon">🐙</div>
-          <div class="skill-info">
-            <div class="skill-name">github</div>
-            <div class="skill-desc">GitHub operations via gh CLI</div>
-            <span class="skill-status ready">ready</span>
-          </div>
+          <div class="skill-name">github</div>
+          <div class="skill-desc">Issues, PRs, repos, CI runs via gh CLI</div>
         </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">📦</div>
-          <div class="skill-info">
-            <div class="skill-name">gh-issues</div>
-            <div class="skill-desc">Fetch issues, spawn agents to fix and open PRs</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">📦</div>
-          <div class="skill-info">
-            <div class="skill-name">healthcheck</div>
-            <div class="skill-desc">Host security hardening and risk config</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">📦</div>
-          <div class="skill-info">
-            <div class="skill-name">mcporter</div>
-            <div class="skill-desc">Call MCP servers/tools directly</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">🖼️</div>
-          <div class="skill-info">
-            <div class="skill-name">openai-image-gen</div>
-            <div class="skill-desc">Batch-generate images via OpenAI Images API</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">☁️</div>
-          <div class="skill-info">
-            <div class="skill-name">openai-whisper-api</div>
-            <div class="skill-desc">Transcribe audio via OpenAI Whisper API</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">🧿</div>
-          <div class="skill-info">
-            <div class="skill-name">oracle</div>
-            <div class="skill-desc">Oracle CLI for prompt bundling</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">📦</div>
-          <div class="skill-info">
-            <div class="skill-name">skill-creator</div>
-            <div class="skill-desc">Create or update agent skills</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">🌤️</div>
-          <div class="skill-info">
-            <div class="skill-name">weather</div>
-            <div class="skill-desc">Get weather forecasts</div>
-            <span class="skill-status ready">ready</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">📦</div>
-          <div class="skill-info">
-            <div class="skill-name">github-contribution</div>
-            <div class="skill-desc">Full OSS contribution workflow</div>
-            <span class="skill-status ready">workspace</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">📦</div>
-          <div class="skill-info">
-            <div class="skill-name">github-issue-resolver</div>
-            <div class="skill-desc">Autonomous issue resolver with guardrails</div>
-            <span class="skill-status ready">workspace</span>
-          </div>
-        </div>
-        <div class="skill-card ready">
+        <div class="skill-card">
           <div class="skill-icon">📈</div>
-          <div class="skill-info">
-            <div class="skill-name">github-trending-cn</div>
-            <div class="skill-desc">GitHub trending monitor</div>
-            <span class="skill-status ready">workspace</span>
-          </div>
+          <div class="skill-name">github-trending</div>
+          <div class="skill-desc">Find hot repos to fork</div>
         </div>
-        <div class="skill-card ready">
-          <div class="skill-icon">📦</div>
-          <div class="skill-info">
-            <div class="skill-name">visual-explainer</div>
-            <div class="skill-desc">Generate visual HTML diagrams</div>
-            <span class="skill-status ready">workspace</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-icon">🐛</div>
+          <div class="skill-name">gh-issues</div>
+          <div class="skill-desc">Fix issues, open PRs automatically</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">✍️</div>
+          <div class="skill-name">github-contrib</div>
+          <div class="skill-desc">Full OSS contribution workflow</div>
         </div>
       </div>
     </div>
     
     <div class="section">
-      <h2 class="section-title">🔴 Available to Install <span class="count">41</span></h2>
+      <h2 class="section-title">💻 Coding & Agents</h2>
       <div class="skill-grid">
-        <div class="skill-card missing">
-          <div class="skill-icon">🔐</div>
-          <div class="skill-info">
-            <div class="skill-name">1password</div>
-            <div class="skill-desc">1Password CLI integration</div>
-            <span class="skill-status missing">missing</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-icon">🧩</div>
+          <div class="skill-name">coding-agent</div>
+          <div class="skill-desc">Run Claude Code programmatically</div>
         </div>
-        <div class="skill-card missing">
-          <div class="skill-icon">🎮</div>
-          <div class="skill-info">
-            <div class="skill-name">discord</div>
-            <div class="skill-desc">Discord operations</div>
-            <span class="skill-status missing">missing</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-icon">🧠</div>
+          <div class="skill-name">sub-agents</div>
+          <div class="skill-desc">Spawn parallel agents (Grok 2M context!)</div>
         </div>
-        <div class="skill-card missing">
-          <div class="skill-icon">🗣️</div>
-          <div class="skill-info">
-            <div class="skill-name">sag</div>
-            <div class="skill-desc">ElevenLabs TTS for voice</div>
-            <span class="skill-status missing">missing</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-icon">📦</div>
+          <div class="skill-name">skill-creator</div>
+          <div class="skill-desc">Create custom skills</div>
         </div>
-        <div class="skill-card missing">
-          <div class="skill-icon">💬</div>
-          <div class="skill-info">
-            <div class="skill-name">slack</div>
-            <div class="skill-desc">Slack operations</div>
-            <span class="skill-status missing">missing</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-icon">🧿</div>
+          <div class="skill-name">oracle</div>
+          <div class="skill-desc">Prompt bundling & sessions</div>
         </div>
-        <div class="skill-card missing">
-          <div class="skill-icon">𝕏</div>
-          <div class="skill-info">
-            <div class="skill-name">xurl</div>
-            <div class="skill-desc">X/Twitter API operations</div>
-            <span class="skill-status missing">missing</span>
-          </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 class="section-title">🎨 Visual & Research</h2>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <div class="skill-name">visual-explainer</div>
+          <div class="skill-desc">Generate HTML diagrams & plans</div>
         </div>
-        <div class="skill-card missing">
-          <div class="skill-icon">🎵</div>
-          <div class="skill-info">
-            <div class="skill-name">spotify-player</div>
-            <div class="skill-desc">Spotify playback control</div>
-            <span class="skill-status missing">missing</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔍</div>
+          <div class="skill-name">web-search</div>
+          <div class="skill-desc">Research anything on web</div>
         </div>
-        <div class="skill-card missing">
-          <div class="skill-icon">📝</div>
-          <div class="skill-info">
-            <div class="skill-name">notion</div>
-            <div class="skill-desc">Notion API integration</div>
-            <span class="skill-status missing">missing</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-icon">📦</div>
+          <div class="skill-name">clawhub</div>
+          <div class="skill-desc">Install more skills</div>
         </div>
-        <div class="skill-card missing">
-          <div class="skill-icon">💎</div>
-          <div class="skill-info">
-            <div class="skill-name">obsidian</div>
-            <div class="skill-desc">Obsidian vault operations</div>
-            <span class="skill-status missing">missing</span>
-          </div>
+        <div class="skill-card">
+          <div class="skill-icon">🛠️</div>
+          <div class="skill-name">mcporter</div>
+          <div class="skill-desc">Call MCP servers</div>
         </div>
+      </div>
+    </div>
+    
+    <div class="other-skills">
+      <h3>📚 40+ More Skills Available on Request</h3>
+      <div class="other-list">
+        <span class="other-tag">discord</span>
+        <span class="other-tag">slack</span>
+        <span class="other-tag">xurl (Twitter)</span>
+        <span class="other-tag">notion</span>
+        <span class="other-tag">obsidian</span>
+        <span class="other-tag">spotify</span>
+        <span class="other-tag">sag (TTS)</span>
+        <span class="other-tag">1password</span>
+        <span class="other-tag">gmail</span>
+        <span class="other-tag">+30 more</span>
       </div>
     </div>
     
     <div class="footer">
       <p>🤖 Built by Drew | Powered by OpenClaw</p>
-      <p style="margin-top: 10px;">Want more skills? Just say "Install [skill name]"</p>
+      <p style="margin-top: 10px;">Say "install [skill]" to add more!</p>
     </div>
   </div>
 </body>
