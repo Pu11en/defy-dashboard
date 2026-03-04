@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📋 Defy2 Spec - Discord OpenClaw</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: rgba(255,255,255,0.1);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; background: linear-gradient(90deg, #22d3ee, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; }
+    .subtitle { color: var(--text-dim); font-size: 0.75rem; margin-bottom: 20px; }
+    .box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 15px; }
+    .box-title { font-weight: 600; color: var(--cyan); margin-bottom: 10px; }
+    .item { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 6px; }
+    .item::before { content: "• "; color: var(--purple); }
+    .bot-name { font-size: 1.2rem; color: var(--cyan); font-weight: 600; }
+    .channel-name { font-size: 1rem; color: var(--purple); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 Defy2 Spec</h1>
+    <p class="subtitle">Second OpenClaw instance for Discord</p>
+    
+    <div class="box">
+      <div class="box-title">🤖 Bot Name</div>
+      <div class="bot-name">defy2</div>
+    </div>
+    
+    <div class="box">
+      <div class="box-title">💬 Discord Channel</div>
+      <div class="channel-name">#defy2</div>
+    </div>
+    
+    <div class="box">
+      <div class="box-title">🔐 Access Level</div>
+      <div class="item">Full access - can do everything</div>
+      <div class="item">GitHub operations</div>
+      <div class="item">Web search</div>
+      <div class="item">File operations</div>
+      <div class="item">Spawn sub-agents</div>
+      <div class="item">Run commands</div>
+    </div>
+    
+    <div class="box">
+      <div class="box-title">👤 Behavior</div>
+      <div class="item">Responds to EVERYONE in the channel</div>
+      <div class="item">No @mention needed</div>
+      <div class="item">Just type and it answers</div>
+    </div>
+    
+    <div class="box">
+      <div class="box-title">🎯 What It Does</div>
+      <div class="item">GitHub repo research</div>
+      <div class="item">Find and summarize repos</div>
+      <div class="item">Answer questions</div>
+      <div class="item">Help with coding</div>
+      <div class="item">Anything you need!</div>
+    </div>
+  </div>
+</body>
+</html>
