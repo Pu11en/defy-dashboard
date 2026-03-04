@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Defy's Skills Canvas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.1);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --accent-cyan: #22d3ee;
+      --accent-purple: #a78bfa;
+      --accent-green: #34d399;
+      --accent-amber: #fbbf24;
+      --accent-pink: #f472b6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px;
+      background-image: 
+        radial-gradient(ellipse at 30% 0%, rgba(34,211,238,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 100%, rgba(167,139,250,0.12) 0%, transparent 50%);
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .subtitle {
+      color: var(--text-dim);
+      font-size: 1.1rem;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 30px 0;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-cyan);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .section {
+      margin-bottom: 50px;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      border-radius: 2px;
+    }
+    .section-core::before { background: var(--accent-cyan); }
+    .section-ai::before { background: var(--accent-purple); }
+    .section-tools::before { background: var(--accent-green); }
+    .section-misc::before { background: var(--accent-amber); }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 12px 40px rgba(34,211,238,0.15);
+    }
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+      background: var(--surface-elevated);
+    }
+    .skill-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .skill-desc {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .skill-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      margin-top: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-global { background: rgba(34,211,238,0.15); color: var(--accent-cyan); }
+    .badge-workspace { background: rgba(167,139,250,0.15); color: var(--accent-purple); }
+    
+    .defy-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow: 0 0 60px rgba(34,211,238,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="defy-avatar">🤖</div>
+      <h1>Defy's Skills Canvas</h1>
+      <p class="subtitle">Your AI assistant's full capability matrix</p>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-number">63</div>
+          <div class="stat-label">Global Skills</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">9</div>
+          <div class="stat-label">Workspace Skills</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Sub-Agents</div>
+        </div>
+      </div>
+    </header>
+    
+    <div class="section">
+      <h2 class="section-title section-core">🔧 Core Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🐙</div>
+          <div class="skill-name">github</div>
+          <div class="skill-desc">GitHub operations via gh CLI - issues, PRs, repos, CI runs</div>
+          <span class="skill-badge badge-global">global</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">💻</div>
+          <div class="skill-name">coding-agent</div>
+          <div class="skill-desc">Run Codex CLI, Claude Code, Kiro, OpenCode programmatically</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🌦️</div>
+          <div class="skill-name">weather</div>
+          <div class="skill-desc">Get current weather and forecasts via wttr.in or Open-Meteo</div>
+          <span class="skill-badge badge-global">global</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <div class="skill-name">visual-explainer</div>
+          <div class="skill-desc">Generate HTML pages with diagrams, flowcharts, tables</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔍</div>
+          <div class="skill-name">gh-issues</div>
+          <div class="skill-desc">Fetch GitHub issues, spawn agents to fix and open PRs</div>
+          <span class="skill-badge badge-global">global</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📦</div>
+          <div class="skill-name">clawhub</div>
+          <div class="skill-desc">Search, install, publish skills from clawhub.com</div>
+          <span class="skill-badge badge-global">global</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 class="section-title section-ai">🤖 AI & Agents</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🧠</div>
+          <div class="skill-name">Sub-Agents</div>
+          <div class="skill-desc">Spawn parallel AI agents (Grok 4.1 with 2M context!)</div>
+          <span class="skill-badge badge-global">built-in</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔮</div>
+          <div class="skill-name">oracle</div>
+          <div class="skill-desc">Oracle CLI for prompt bundling and sessions</div>
+          <span class="skill-badge badge-global">global</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🧩</div>
+          <div class="skill-name">mcporter</div>
+          <div class="skill-desc">Call MCP servers/tools directly (HTTP or stdio)</div>
+          <span class="skill-badge badge-global">global</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🗣️</div>
+          <div class="skill-name">sag</div>
+          <div class="skill-desc">ElevenLabs TTS for voice storytelling</div>
+          <span class="skill-badge badge-global">global</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 class="section-title section-tools">🛠️ Tools & Integrations</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">📁</div>
+          <div class="skill-name">File Operations</div>
+          <div class="skill-desc">Read, write, edit files on your machine</div>
+          <span class="skill-badge badge-global">built-in</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-name">Browser Control</div>
+          <div class="skill-desc">Automate web tasks, fill forms, scrape data</div>
+          <span class="skill-badge badge-global">built-in</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card">
+          <div class="skill-icon">🔎</div>
+          <div class="skill-name">Web Search</div>
+          <div class="skill-desc">Brave Search API for research</div>
+          <span class="skill-badge badge-global">built-in</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📥</div>
+          <div class="skill-name">Web Fetch</div>
+          <div class="skill-desc">Fetch and extract readable content from URLs</div>
+          <span class="skill-badge badge-global">built-in</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">💬</div>
+          <div class="skill-name">Telegram</div>
+          <div class="skill-desc">Chat with you via Telegram</div>
+          <span class="skill-badge badge-global">channel</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎯</div>
+          <div class="skill-name">Canvas</div>
+          <div class="skill-desc">Generate visual diagrams and HTML pages</div>
+          <span class="skill-badge badge-global">built-in</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2 class="section-title section-misc">📚 Workspace Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🐱</div>
+          <div class="skill-name">github-contribution</div>
+          <div class="skill-desc">Full workflow for OSS contributions - fork, sync, PR</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🐛</div>
+          <div class="skill-name">github-issue-resolver</div>
+          <div class="skill-desc">Autonomous issue resolver with guardrails</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <div class="skill-name">github-ops</div>
+          <div class="skill-desc">GitHub operations via gh CLI</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔥</div>
+          <div class="skill-name">github-trending-cn</div>
+          <div class="skill-desc">GitHub trending monitor - get hot repos</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🖼️</div>
+          <div class="skill-name">visual-explainer</div>
+          <div class="skill-desc">Beautiful HTML visual explanations</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">✨</div>
+          <div class="skill-name">self-improvement</div>
+          <div class="skill-desc">Skills for improving agent capabilities</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔧</div>
+          <div class="skill-name">free-claude-code</div>
+          <div class="skill-desc">Free Claude Code setup</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📦</div>
+          <div class="skill-name">auto-repo-finder</div>
+          <div class="skill-desc">Find repos to fork</div>
+          <span class="skill-badge badge-workspace">workspace</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">✍️</div>
+          <div class="skill-name">skill-creator</div>
+          <div class="skill-desc">Create or update agent skills</div>
+          <span class="skill-badge badge-global">global</span>
+        </div>
+      </div>
+    </div>
+    
+    <footer style="text-align: center; margin-top: 60px; padding: 30px; color: var(--text-dim); font-size: 0.9rem;">
+      <p>🤖 Defy | Built by Drew | Powered by OpenClaw</p>
+      <p style="margin-top: 10px;">72 Global Skills + 9 Workspace Skills + Unlimited Sub-Agents</p>
+    </footer>
+  </div>
+</body>
+</html>
