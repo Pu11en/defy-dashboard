@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛠️ Project Management - Backend Showdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+      --amber: #fbbf24;
+      --red: #ef4444;
+      --pink: #f472b6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+      background-image: radial-gradient(ellipse at 30% 0%, rgba(34,211,238,0.08) 0%, transparent 50%);
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 25px; }
+    
+    .repo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .repo-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .repo-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--cyan);
+    }
+    .repo-desc {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    
+    .stack-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .stack-item {
+      background: var(--surface-elevated);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .stack-item.backend { border-left: 2px solid var(--purple); }
+    .stack-item.frontend { border-left: 2px solid var(--cyan); }
+    .stack-item.db { border-left: 2px solid var(--green); }
+    .stack-item.deploy { border-left: 2px solid var(--amber); }
+    .stack-item.ai { border-left: 2px solid var(--pink); }
+    
+    .rating {
+      display: flex;
+      gap: 15px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.7rem;
+    }
+    .rating-item { display: flex; align-items: center; gap: 5px; }
+    .rating-item .label { color: var(--text-dim); }
+    .rating-item .val { font-weight: 600; }
+    .val.easy { color: var(--green); }
+    .val.med { color: var(--amber); }
+    .val.hard { color: var(--red); }
+    
+    .footer { text-align: center; margin-top: 30px; color: var(--text-dim); font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛠️ Project Management - Backend Showdown</h1>
+    <p class="subtitle">Tech stacks compared - pick your weapon</p>
+    
+    <!-- Tasks.md -->
+    <div class="repo-card">
+      <div class="repo-header">
+        <span class="repo-name">Tasks.md</span>
+        <span style="color: var(--text-dim); font-size: 0.75rem;">baldissaramatheus/Tasks.md</span>
+      </div>
+      <div class="repo-desc">Markdown file-based task board. Simplest possible - no database, just .md files.</div>
+      <div class="stack-grid">
+        <div class="stack-item frontend">🎨 Svelte</div>
+        <div class="stack-item backend">⚙️ Go</div>
+        <div class="stack-item db">📁 Markdown files</div>
+        <div class="stack-item deploy">🐳 Docker</div>
+      </div>
+      <div class="rating">
+        <div class="rating-item"><span class="label">Setup:</span> <span class="val easy">1/5 Easy</span></div>
+        <div class="rating-item"><span class="label">Speed:</span> <span class="val easy">⚡⚡⚡⚡⚡</span></div>
+        <div class="rating-item"><span class="label">Telegram:</span> <span class="val easy">✅ Great</span></div>
+      </div>
+    </div>
+    
+    <!-- Vibe Kanban -->
+    <div class="repo-card">
+      <div class="repo-header">
+        <span class="repo-name">Vibe Kanban ⭐</span>
+        <span style="color: var(--text-dim); font-size: 0.75rem;">BloopAI/vibe-kanban</span>
+      </div>
+      <div class="repo-desc">AI-powered kanban for coding agents. You tell it what to build, AI does it. Built by Bloop.</div>
+      <div class="stack-grid">
+        <div class="stack-item backend">🦀 Rust</div>
+        <div class="stack-item frontend">⚛️ React/Next.js</div>
+        <div class="stack-item db">🗄️ SQLite</div>
+        <div class="stack-item deploy">🐳 Docker</div>
+        <div class="stack-item ai">🤖 AI-native</div>
+      </div>
+      <div class="rating">
+        <div class="rating-item"><span class="label">Setup:</span> <span class="val med">3/5 Medium</span></div>
+        <div class="rating-item"><span class="label">Speed:</span> <span class="val easy">⚡⚡⚡⚡</span></div>
+        <div class="rating-item"><span class="label">Telegram:</span> <span class="val med">⚠️ Needs work</span></div>
+      </div>
+    </div>
+    
+    <!-- Wekan -->
+    <div class="repo-card">
+      <div class="repo-header">
+        <span class="repo-name">Wekan</span>
+        <span style="color: var(--text-dim); font-size: 0.75rem;">wekan/wekan</span>
+      </div>
+      <div class="repo-desc">Full-featured kanban. The classic open source option. Used by companies with 30k users.</div>
+      <div class="stack-grid">
+        <div class="stack-item frontend">☄️ Meteor/Blaze</div>
+        <div class="stack-item backend">☄️ Meteor (Node.js)</div>
+        <div class="stack-item db">🗄️ MongoDB</div>
+        <div class="stack-item deploy">🐳 Docker</div>
+      </div>
+      <div class="rating">
+        <div class="rating-item"><span class="label">Setup:</span> <span class="val hard">4/5 Hard</span></div>
+        <div class="rating-item"><span class="label">Speed:</span> <span class="val med">⚡⚡⚡</span></div>
+        <div class="rating-item"><span class="label">Telegram:</span> <span class="val hard">❌ Heavy</span></div>
+      </div>
+    </div>
+    
+    <!-- Plane -->
+    <div class="repo-card">
+      <div class="repo-header">
+        <span class="repo-name">Plane</span>
+        <span style="color: var(--text-dim); font-size: 0.75rem;">makeplane/plane</span>
+      </div>
+      <div class="repo-desc">Linear/Jira alternative. Modern, fast, full-featured. Very popular right now.</div>
+      <div class="stack-grid">
+        <div class="stack-item frontend">⚛️ Next.js</div>
+        <div class="stack-item backend">🐍 Python/Django</div>
+        <div class="stack-item db">🗄️ PostgreSQL</div>
+        <div class="stack-item deploy">🐳 Docker</div>
+        <div class="stack-item deploy">☁️ S3 (files)</div>
+      </div>
+      <div class="rating">
+        <div class="rating-item"><span class="label">Setup:</span> <span class="val hard">4/5 Hard</span></div>
+        <div class="rating-item"><span class="label">Speed:</span> <span class="val easy">⚡⚡⚡⚡</span></div>
+        <div class="rating-item"><span class="label">Telegram:</span> <span class="val hard">❌ Heavy</span></div>
+      </div>
+    </div>
+    
+    <!-- Planka -->
+    <div class="repo-card">
+      <div class="repo-header">
+        <span class="repo-name">Planka</span>
+        <span style="color: var(--text-dim); font-size: 0.75rem;">plankanban/planka</span>
+      </div>
+      <div class="repo-desc">Real-time kanban board. Simple, clean, works out of the box.</div>
+      <div class="stack-grid">
+        <div class="stack-item frontend">⚛️ React</div>
+        <div class="stack-item backend">📦 Redux/Node.js</div>
+        <div class="stack-item db">🗄️ PostgreSQL</div>
+        <div class="stack-item deploy">🐳 Docker</div>
+      </div>
+      <div class="rating">
+        <div class="rating-item"><span class="label">Setup:</span> <span class="val med">2/5 Easy</span></div>
+        <div class="rating-item"><span class="label">Speed:</span> <span class="val easy">⚡⚡⚡⚡</span></div>
+        <div class="rating-item"><span class="label">Telegram:</span> <span class="val med">⚠️ Needs API</span></div>
+      </div>
+    </div>
+    
+    <!-- Leantime -->
+    <div class="repo-card">
+      <div class="repo-header">
+        <span class="repo-name">Leantime</span>
+        <span style="color: var(--text-dim); font-size: 0.75rem;">Leantime/leantime</span>
+      </div>
+      <div class="repo-desc">Goals-focused. Built with ADHD/autism/dyslexia in mind - simple, intuitive.</div>
+      <div class="stack-grid">
+        <div class="stack-item frontend">🎨 PHP/Twig</div>
+        <div class="stack-item backend">🐘 PHP</div>
+        <div class="stack-item db">🗄️ MySQL</div>
+        <div class="stack-item deploy">🐳 Docker</div>
+      </div>
+      <div class="rating">
+        <div class="rating-item"><span class="label">Setup:</span> <span class="val easy">2/5 Easy</span></div>
+        <div class="rating-item"><span class="label">Speed:</span> <span class="val med">⚡⚡⚡</span></div>
+        <div class="rating-item"><span class="label">Telegram:</span> <span class="val med">⚠️ Needs work</span></div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>🤖 Built by Drew | Pick one that fits your needs</p>
+    </div>
+  </div>
+</body>
+</html>
