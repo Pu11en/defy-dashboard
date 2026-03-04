@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧠 Architecture Visualizers</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+      --amber: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-dim); font-size: 0.7rem; margin-bottom: 20px; }
+    
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .tool-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+    .tool-desc {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .feature {
+      background: var(--surface-elevated);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+    }
+    
+    .screenshot {
+      margin-top: 12px;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .screenshot img {
+      width: 100%;
+      display: block;
+    }
+    
+    .demo-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: var(--cyan);
+      color: #000;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Architecture Visualizers</h1>
+    <p class="subtitle">See how your code hooks up</p>
+    
+    <!-- Diagrams -->
+    <div class="tool-card">
+      <div class="tool-name">diagrams (Python)</div>
+      <div class="tool-desc">Draw cloud architectures in Python code. AWS, Azure, GCP, Kubernetes - all supported. No design tools needed.</div>
+      <div class="features">
+        <span class="feature">🐍 Python</span>
+        <span class="feature">☁️ All clouds</span>
+        <span class="feature">📝 Code</span>
+      </div>
+      <div class="screenshot">
+        <img src="https://raw.githubusercontent.com/mingrammer/diagrams/master/assets/img/diagrams.png" alt="diagrams">
+      </div>
+    </div>
+    
+    <!-- Mermaid -->
+    <div class="tool-card">
+      <div class="tool-name">Mermaid.js</div>
+      <div class="tool-desc">Text-to-diagram. GitHub renders it natively. Flowcharts, sequence, ER diagrams, gantt - all from text.</div>
+      <div class="features">
+        <span class="feature">📝 Text</span>
+        <span class="feature">⚡ Fast</span>
+        <span class="feature">🐙 GitHub native</span>
+      </div>
+      <a class="demo-link" href="https://mermaid.live" target="_blank">Try Mermaid Live →</a>
+    </div>
+    
+    <!-- Swark -->
+    <div class="tool-card">
+      <div class="tool-name">Swark</div>
+      <div class="tool-desc">AI generates architecture diagrams from your code using LLMs. Tell it what you want, it draws it.</div>
+      <div class="features">
+        <span class="feature">🤖 AI-powered</span>
+        <span class="feature">🔄 Auto-sync</span>
+        <span class="feature">📝 Code</span>
+      </div>
+    </div>
+    
+    <!-- GitDiagram -->
+    <div class="tool-card">
+      <div class="tool-name">GitDiagram</div>
+      <div class="tool-desc">Instant visualization - replace "github.com" with "diagram.com" in any repo URL. Shows structure automatically.</div>
+      <div class="features">
+        <span class="feature">⚡ Instant</span>
+        <span class="feature">🔄 Auto</span>
+        <span class="feature">📦 Repo → Diagram</span>
+      </div>
+    </div>
+    
+    <!-- System Design Visualizer -->
+    <div class="tool-card">
+      <div class="tool-name">System Design Visualizer</div>
+      <div class="tool-desc">AI turns static diagrams into interactive visualizations. Upload any architecture image, explore it.</div>
+      <div class="features">
+        <span class="feature">🖼️ Image → Interactive</span>
+        <span class="feature">🤖 AI</span>
+        <span class="feature">🔍 Explore</span>
+      </div>
+    </div>
+    
+    <!-- PlantUML -->
+    <div class="tool-card">
+      <div class="tool-name">PlantUML</div>
+      <div class="tool-desc">Classic text-to-diagram. UML, network, wireframes, JSON visualization. Very powerful.</div>
+      <div class="features">
+        <span class="feature">📝 Text</span>
+        <span class="feature">📊 UML</span>
+        <span class="feature">🔧 Powerful</span>
+      </div>
+      <a class="demo-link" href="https://www.plantuml.com/plantuml" target="_blank">Try PlantUML →</a>
+    </div>
+    
+    <!-- Excalidraw -->
+    <div class="tool-card">
+      <div class="tool-name">Excalidraw</div>
+      <div class="tool-desc">Hand-drawn style diagrams. Collaborative. Great for quick sketches that look professional.</div>
+      <div class="features">
+        <span class="feature">✏️ Hand-drawn</span>
+        <span class="feature">👥 Collab</span>
+        <span class="feature">⚡ Quick</span>
+      </div>
+      <a class="demo-link" href="https://excalidraw.com" target="_blank">Try Excalidraw →</a>
+    </div>
+    
+    <!-- Draw.io -->
+    <div class="tool-card">
+      <div class="tool-name">Draw.io (diagrams.net)</div>
+      <div class="tool-desc">The classic. Full-featured diagramming. Flowcharts, org charts, network diagrams. Free forever.</div>
+      <div class="features">
+        <span class="feature">🎨 Full editor</span>
+        <span class="feature">📊 All types</span>
+        <span class="feature">💯 Free</span>
+      </div>
+      <a class="demo-link" href="https://draw.io" target="_blank">Try Draw.io →</a>
+    </div>
+  </div>
+</body>
+</html>
