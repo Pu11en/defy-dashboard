@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤖 Two Agents - One Context</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: rgba(255,255,255,0.1);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container { max-width: 700px; margin: 0 auto; }
+    h1 { font-size: 1.6rem; background: linear-gradient(90deg, #22d3ee, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+    .subtitle { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 25px; }
+    
+    .diagram-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .mermaid { background: #0a0a0f; padding: 15px; border-radius: 8px; display: flex; justify-content: center; }
+    
+    .info { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .info-title { font-weight: 600; margin-bottom: 10px; color: var(--cyan); }
+    .info-item { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 6px; }
+    
+    .agent-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 15px;
+    }
+    .agent-name { font-weight: 600; font-size: 1rem; margin-bottom: 8px; }
+    .agent-defy { color: var(--cyan); }
+    .agent-repo { color: var(--purple); }
+    .agent-tasks { font-size: 0.8rem; color: var(--text-dim); line-height: 1.8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🤖 Two Agents - One Context</h1>
+    <p class="subtitle">Defy on Telegram + RepoFinderBot on Discord</p>
+    
+    <!-- Diagram -->
+    <div class="diagram-box">
+      <div class="mermaid">
+graph TB
+    subgraph SHARED["💾 Shared Context (MEMORY.md)"]
+      M[All memories<br/>preferences<br/>projects]
+    end
+    
+    subgraph TELEGRAM["📱 Telegram"]
+      T[You]
+    end
+    
+    subgraph DISCORD["💬 Discord"]
+      D[You]
+    end
+    
+    T -->|Commands| DEFY[🤖 Defy<br/>Commander]
+    D -->|Commands| REPO[🔍 RepoFinderBot]
+    
+    DEFY -->|reads/writes| M
+    REPO -->|reads/writes| M
+    
+    DEFY -->|does| WORK1[Planning<br/>Coding<br/>Research]
+    REPO -->|outputs| LINKS[📋 GitHub Links<br/>📝 Summaries]
+    
+    REPO -->|posts to| DC[Discord<br/>Channel]
+    
+    T -.->|same context| D
+    
+    style TELEGRAM fill:#164e63,color:#fff
+    style DISCORD fill:#1f2937,color:#fff
+    style SHARED fill:#1e1b4b,color:#fff
+    style DEFY fill:#4c1d95,color:#fff
+    style REPO fill:#1e3a8a,color:#fff
+      </div>
+    </div>
+    
+    <!-- Agent Details -->
+    <div class="agent-box">
+      <div class="agent-name agent-defy">🤖 Defy (Telegram)</div>
+      <div class="agent-tasks">
+        • Commands you directly<br>
+        • Plans projects<br>
+        • Codes and builds<br>
+        • Researches solutions<br>
+        • Spawns sub-agents<br>
+        • Talks to you via voice/text
+      </div>
+    </div>
+    
+    <div class="agent-box">
+      <div class="agent-name agent-repo">🔍 RepoFinderBot (Discord)</div>
+      <div class="agent-tasks">
+        • Finds GitHub repos<br>
+        • Outputs clickable links<br>
+        • Summarizes repos<br>
+        • Later: much more (TBD)
+      </div>
+    </div>
+    
+    <!-- Shared Context -->
+    <div class="info">
+      <div class="info-title">💾 Shared Context</div>
+      <div class="info-item">Both agents read/write to the same MEMORY.md</div>
+      <div class="info-item">What Defy learns, RepoFinderBot knows</div>
+      <div class="info-item">No duplication, single source of truth</div>
+    </div>
+  </div>
+  
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+  </script>
+</body>
+</html>
