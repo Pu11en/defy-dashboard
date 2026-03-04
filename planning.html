@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📐 Project Planning - From Scratch</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+      --amber: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-dim); font-size: 0.7rem; margin-bottom: 25px; }
+    
+    .phase {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .phase-num {
+      display: inline-block;
+      background: var(--cyan);
+      color: #000;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+    .phase-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    .phase-desc {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    
+    .questions {
+      background: var(--surface-elevated);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .questions-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+    .question {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      padding-left: 12px;
+      border-left: 2px solid var(--border);
+    }
+    
+    .output {
+      background: var(--surface-elevated);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 10px;
+    }
+    .output-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .output-item {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+    
+    .flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .flow-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+    }
+    .flow-arrow { color: var(--text-dim); font-size: 1rem; }
+    
+    .principles {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+    .principles h3 {
+      font-size: 0.85rem;
+      color: var(--amber);
+      margin-bottom: 12px;
+    }
+    .principle {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      padding-left: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📐 Planning Big Projects - The Right Way</h1>
+    <p class="subtitle">Don't build sloppy - plan first</p>
+    
+    <!-- Flow Overview -->
+    <div class="flow">
+      <div class="flow-step">1. Problem</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">2. Requirements</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">3. Architecture</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">4. Tech Stack</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">5. Plan</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">6. Build</div>
+    </div>
+    
+    <!-- Phase 1 -->
+    <div class="phase">
+      <div class="phase-title"><span class="phase-num">1</span>Define the Problem</div>
+      <div class="phase-desc">What exactly are you solving? Be specific.</div>
+      <div class="questions">
+        <div class="questions-title">Ask yourself:</div>
+        <div class="question">What pain point does this solve?</div>
+        <div class="question">Who is this for?</div>
+        <div class="question">What's the current workaround?</div>
+        <div class="question">Why does it need to exist?</div>
+      </div>
+      <div class="output">
+        <div class="output-title">Output: Problem Statement (1 sentence)</div>
+      </div>
+    </div>
+    
+    <!-- Phase 2 -->
+    <div class="phase">
+      <div class="phase-title"><span class="phase-num">2</span>Requirements</div>
+      <div class="phase-desc">What must it do? What's nice to have?</div>
+      <div class="questions">
+        <div class="questions-title">Ask yourself:</div>
+        <div class="question">What are the must-have features?</div>
+        <div class="question">What can come later (MVP)?</div>
+        <div class="question">What are the constraints? (budget, time, tech)</div>
+        <div class="question">What does success look like?</div>
+      </div>
+      <div class="output">
+        <div class="output-title">Output: Feature list + MVP scope</div>
+      </div>
+    </div>
+    
+    <!-- Phase 3 -->
+    <div class="phase">
+      <div class="phase-title"><span class="phase-num">3</span>Architecture Design</div>
+      <div class="phase-desc">How will the pieces fit together?</div>
+      <div class="questions">
+        <div class="questions-title">Ask yourself:</div>
+        <div class="question">What are the main components?</div>
+        <div class="question">How do they communicate?</div>
+        <div class="question">What are the data flows?</div>
+        <div class="question">Where does state live?</div>
+      </div>
+      <div class="output">
+        <div class="output-title">Output: Architecture diagram (blocks + arrows)</div>
+      </div>
+    </div>
+    
+    <!-- Phase 4 -->
+    <div class="phase">
+      <div class="phase-title"><span class="phase-num">4</span>Choose Tech Stack</div>
+      <div class="phase-desc">What tools to use? (Don't overcomplicate)</div>
+      <div class="questions">
+        <div class="questions-title">Ask yourself:</div>
+        <div class="question">What's the simplest stack that works?</div>
+        <div class="question">What do you already know?</div>
+        <div class="question">What do other successful projects use?</div>
+        <div class="question">Can it scale later?</div>
+      </div>
+      <div class="output">
+        <div class="output-title">Output: List of technologies</div>
+      </div>
+    </div>
+    
+    <!-- Phase 5 -->
+    <div class="phase">
+      <div class="phase-title"><span class="phase-num">5</span>Execution Plan</div>
+      <div class="phase-desc">What to build in what order?</div>
+      <div class="questions">
+        <div class="questions-title">Ask yourself:</div>
+        <div class="question">What's the smallest thing I can ship?</div>
+        <div class="question">What are the dependencies between parts?</div>
+        <div class="question">What can be done in parallel?</div>
+        <div class="question">What's the timeline?</div>
+      </div>
+      <div class="output">
+        <div class="output-title">Output: Milestones + roadmap</div>
+      </div>
+    </div>
+    
+    <!-- Phase 6 -->
+    <div class="phase">
+      <div class="phase-title"><span class="phase-num">6</span>Build & Iterate</div>
+      <div class="phase-desc">Actually make it happen</div>
+      <div class="questions">
+        <div class="questions-title">Ask yourself:</div>
+        <div class="question">Did I ship the smallest thing first?</div>
+        <div class="question">Am I testing as I go?</div>
+        <div class="question">Do I need to refactor anything?</div>
+        <div class="question">When should I get feedback from users?</div>
+      </div>
+      <div class="output">
+        <div class="output-title">Output: Working software</div>
+      </div>
+    </div>
+    
+    <!-- Principles -->
+    <div class="principles">
+      <h3>⚠️ Architecture Principles</h3>
+      <div class="principle"><strong>KISS</strong> - Keep it simple, stupid</div>
+      <div class="principle"><strong>YAGNI</strong> - You aren't gonna need it</div>
+      <div class="principle"><strong>DRY</strong> - Don't repeat yourself</div>
+      <div class="principle"><strong>Loose coupling</strong> - Components should be independent</div>
+      <div class="principle"><strong>Single responsibility</strong> - Each thing does one thing well</div>
+    </div>
+  </div>
+</body>
+</html>
