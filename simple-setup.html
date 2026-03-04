@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎯 Simple Setup - 1 Channel + Isolated OpenClaw</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: rgba(255,255,255,0.1);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container { max-width: 700px; margin: 0 auto; }
+    h1 {
+      font-size: 1.6rem;
+      background: linear-gradient(90deg, #22d3ee, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .subtitle { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 25px; }
+    
+    .diagram-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .mermaid {
+      background: #0a0a0f;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .info {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .info-title { font-weight: 600; margin-bottom: 10px; color: var(--cyan); }
+    .info-item { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 6px; }
+    
+    .setup-steps {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+    .step {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      padding-left: 12px;
+      border-left: 2px solid var(--cyan);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Simple Setup</h1>
+    <p class="subtitle">1 Discord Channel + Isolated OpenClaw</p>
+    
+    <!-- Diagram -->
+    <div class="diagram-box">
+      <div class="mermaid">
+graph TB
+    subgraph TELEGRAM["📱 Telegram"]
+      T1[You]
+    end
+    
+    subgraph DISCORD["💬 Discord"]
+      D1[#general]
+    end
+    
+    subgraph CONTAINER1["📦 OpenClaw 1"]
+      OC1[Defy Instance 1]
+    end
+    
+    subgraph CONTAINER2["📦 OpenClaw 2"]
+      OC2[Defy Instance 2]
+    end
+    
+    subgraph CONTAINER3["📦 OpenClaw N"]
+      OCN[Defy Instance N]
+    end
+    
+    T1 -->|Commands| OC1
+    OC1 -->|Posts to| D1
+    OC2 -->|Posts to| D1
+    OCN -->|Posts to| D1
+    
+    T1 -->|Commands| OC2
+    T1 -->|Commands| OCN
+    
+    style TELEGRAM fill:#164e63,color:#fff
+    style DISCORD fill:#1f2937,color:#fff
+    style CONTAINER1 fill:#1e1b4b,color:#fff
+    style CONTAINER2 fill:#1e1b4b,color:#fff
+    style CONTAINER3 fill:#1e1b4b,color:#fff
+      </div>
+    </div>
+    
+    <!-- Info -->
+    <div class="info">
+      <div class="info-title">How it works:</div>
+      <div class="info-item">• You talk to me on Telegram</div>
+      <div class="info-item">• I control 1 Discord channel (#general)</div>
+      <div class="info-item">• Each OpenClaw runs in its own Docker container</div>
+      <div class="info-item">• Fully isolated - if one crashes, others keep working</div>
+      <div class="info-item">• Scale by adding more containers</div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="setup-steps">
+      <div class="info-title">To set up:</div>
+      <div class="step">1. Install WSL2 (run `wsl --install` in admin PowerShell)</div>
+      <div class="step">2. Restart computer</div>
+      <div class="step">3. I'll set up Docker + multiple OpenClaw containers</div>
+      <div class="step">4. Connect to Discord</div>
+    </div>
+  </div>
+  
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+  </script>
+</body>
+</html>
