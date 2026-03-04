@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔷 Mermaid Tools & Repos</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+      --amber: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-dim); font-size: 0.7rem; margin-bottom: 20px; }
+    
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      margin: 20px 0 12px;
+    }
+    
+    .tool {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .tool-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--cyan);
+      margin-bottom: 4px;
+    }
+    .tool-link {
+      font-size: 0.7rem;
+      color: var(--purple);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .tool-desc {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    
+    .types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .type {
+      background: var(--surface-elevated);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔷 Mermaid Tools & Repos</h1>
+    <p class="subtitle">Different types of Mermaid for planning</p>
+    
+    <!-- Core -->
+    <div class="section-title">📦 Core</div>
+    
+    <div class="tool">
+      <div class="tool-name">Mermaid.js</div>
+      <a class="tool-link" href="https://github.com/mermaid-js/mermaid" target="_blank">github.com/mermaid-js/mermaid</a>
+      <div class="tool-desc">The main library. Text-to-diagrams. Flowcharts, sequence, class, state, ER, Gantt, and more.</div>
+      <div class="types">
+        <span class="type">flowchart</span>
+        <span class="type">sequence</span>
+        <span class="type">class</span>
+        <span class="type">state</span>
+        <span class="type">ER</span>
+        <span class="type">gantt</span>
+      </div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">Mermaid Live Editor</div>
+      <a class="tool-link" href="https://mermaid.live" target="_blank">mermaid.live</a>
+      <div class="tool-desc">Online editor. Write mermaid, see it render instantly. Export as PNG, SVG, PDF.</div>
+    </div>
+    
+    <!-- Extensions -->
+    <div class="section-title">🔧 Extensions & Tools</div>
+    
+    <div class="tool">
+      <div class="tool-name">beautiful-mermaid</div>
+      <a class="tool-link" href="https://github.com/lukilabs/beautiful-mermaid" target="_blank">github.com/lukilabs/beautiful-mermaid</a>
+      <div class="tool-desc">ASCII rendering of mermaid diagrams. Export to text/console. Pretty!</div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">vscode-mermAId</div>
+      <a class="tool-link" href="https://github.com/microsoft/vscode-mermAId" target="_blank">github.com/microsoft/vscode-mermAId</a>
+      <div class="tool-desc">VS Code extension. AI-powered diagram generation using Copilot. Type what you want, it draws.</div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">Mermaid Chart</div>
+      <a class="tool-link" href="https://mermaid.chart" target="_blank">mermaid.chart</a>
+      <div class="tool-desc">Commercial version. Team collaboration, templates, cloud storage.</div>
+    </div>
+    
+    <!-- Types -->
+    <div class="section-title">📊 Diagram Types</div>
+    
+    <div class="tool">
+      <div class="tool-desc">
+        <strong>flowchart</strong> - Process flows, workflows<br>
+        <strong>sequence</strong> - How things talk to each other<br>
+        <strong>class</strong> - Object-oriented classes<br>
+        <strong>state</strong> - State machines<br>
+        <strong>ER</strong> - Database schemas<br>
+        <strong>gantt</strong> - Project timelines<br>
+        <strong>pie</strong> - Pie charts<br>
+        <strong>gitgraph</strong> - Git history visualization<br>
+        <strong>requirement</strong> - Requirements diagrams<br>
+        <strong>journey</strong> - User journey maps
+      </div>
+    </div>
+    
+    <!-- Examples -->
+    <div class="section-title">💡 For Your Projects</div>
+    
+    <div class="tool">
+      <div class="tool-desc">
+        <strong>Planning a feature:</strong> flowchart<br>
+        <strong>API calls:</strong> sequence diagram<br>
+        <strong>Database:</strong> ER diagram<br>
+        <strong>Timeline:</strong> gantt chart<br>
+        <strong>User flow:</strong> journey<br>
+        <strong>Architecture:</strong> flowchart or C4
+      </div>
+    </div>
+  </div>
+</body>
+</html>
