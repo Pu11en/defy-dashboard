@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚀 Vercel-Ready Kanban</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+      --amber: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+      background-image: radial-gradient(ellipse at 30% 0%, rgba(34,211,238,0.08) 0%, transparent 50%);
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-dim); font-size: 0.75rem; margin-bottom: 25px; }
+    
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .card-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+    .card-desc {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .tag {
+      background: var(--surface-elevated);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+    }
+    
+    .vercel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      color: white;
+    }
+    
+    .footer { text-align: center; margin-top: 25px; color: var(--text-dim); font-size: 0.7rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Vercel-Ready Kanban</h1>
+    <p class="subtitle">Deploy instantly - works on iPhone</p>
+    
+    <div class="card">
+      <div class="card-name">kanban-next</div>
+      <div class="card-desc">Simple Next.js kanban. Auth with Google/GitHub. Uses Supabase for database. Clean and minimal.</div>
+      <div class="stack">
+        <span class="tag">⚛️ Next.js</span>
+        <span class="tag">🗄️ Supabase</span>
+        <span class="tag">🔐 Auth</span>
+        <span class="tag">📱 Mobile OK</span>
+      </div>
+      <div class="vercel-badge">🚀 One-click Vercel deploy</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-name">my-kanban (T3 Stack)</div>
+      <div class="card-desc">Full T3 stack - Next.js, tRPC, Prisma, Chakra UI. More features but more complex.</div>
+      <div class="stack">
+        <span class="tag">⚛️ Next.js</span>
+        <span class="tag">🔄 tRPC</span>
+        <span class="tag">🗄️ Prisma</span>
+        <span class="tag">🎨 Chakra</span>
+      </div>
+      <div class="vercel-badge">🚀 Deploy to Vercel</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-name">project-management-nextjs</div>
+      <div class="card-desc">Tasks with project relationships. Good for bigger projects. Postgres + Prisma.</div>
+      <div class="stack">
+        <span class="tag">⚛️ Next.js</span>
+        <span class="tag">🗄️ PostgreSQL</span>
+        <span class="tag">📊 Prisma</span>
+      </div>
+      <div class="vercel-badge">🚀 Deploy to Vercel</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-name">open-kanban</div>
+      <div class="card-desc">Frontend for OpenProject. If you already use OpenProject, this gives you a nice UI.</div>
+      <div class="stack">
+        <span class="tag">⚛️ Next.js</span>
+        <span class="tag">🔗 OpenProject</span>
+      </div>
+      <div class="vercel-badge">🚀 Deploy to Vercel</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-name">Kanba.co (Community)</div>
+      <div class="card-desc">Open source alternative to Trello. Built by Vercel community member. Clean UI.</div>
+      <div class="stack">
+        <span class="tag">⚛️ Next.js</span>
+        <span class="tag">🎨 Clean UI</span>
+      </div>
+      <div class="vercel-badge">🚀 Vercel-native</div>
+    </div>
+    
+    <div class="footer">
+      <p>🤖 All deploy with <code>vercel</code> command</p>
+      <p style="margin-top: 5px;">Works great in iPhone Safari/Telegram browser</p>
+    </div>
+  </div>
+</body>
+</html>
