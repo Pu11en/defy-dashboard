@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚀 Scaling OpenClaw - Backend Options</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+      --amber: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-dim); font-size: 0.7rem; margin-bottom: 20px; }
+    
+    .option {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .option-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+    .option-desc {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .option-code {
+      background: var(--surface-elevated);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.65rem;
+      color: var(--green);
+      font-family: monospace;
+      overflow-x: auto;
+    }
+    
+    .features {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .feature {
+      background: var(--surface-elevated);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.6rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Scaling OpenClaw - Backend Options</h1>
+    <p class="subtitle">Multiple instances on your machine</p>
+    
+    <!-- Option 1 -->
+    <div class="option">
+      <div class="option-title">1. Docker Compose (Recommended)</div>
+      <div class="option-desc">Run multiple isolated OpenClaw containers. Each gets own port, config, memory.</div>
+      <div class="option-code">docker run -d --name openclaw-agent1 -p 18801:3001 -e OPENCLAW_GATEWAY_TOKEN=token1 openclaw/openclaw:latest</div>
+      <div class="features">
+        <span class="feature">Isolated</span>
+        <span class="feature">Portable</span>
+        <span class="feature">Easy to manage</span>
+      </div>
+    </div>
+    
+    <!-- Option 2 -->
+    <div class="option">
+      <div class="option-title">2. Multiple Profiles</div>
+      <div class="option-desc">Run multiple OpenClaw with different config files on same machine.</div>
+      <div class="option-code">openclaw --profile agent1 gateway
+openclaw --profile agent2 gateway</div>
+      <div class="features">
+        <span class="feature">No Docker</span>
+        <span class="feature">Lightweight</span>
+        <span class="feature">Same machine</span>
+      </div>
+    </div>
+    
+    <!-- Option 3 -->
+    <div class="option">
+      <div class="option-title">3. Sub-agents (What we have!)</div>
+      <div class="option-desc">Spawn parallel agents from one OpenClaw. Each gets own context + model.</div>
+      <div class="option-code">sessions_spawn(model="grok-4.1", task="work on X")</div>
+      <div class="features">
+        <span class="feature">Already working</span>
+        <span class="feature">Shared memory</span>
+        <span class="feature">Fast spawn</span>
+      </div>
+    </div>
+    
+    <!-- Option 4 -->
+    <div class="option">
+      <div class="option-title">4. Kubernetes (Advanced)</div>
+      <div class="option-desc">Run at scale with multiple machines. Auto-scaling, load balancing.</div>
+      <div class="option-code"># For when you need 100+ agents</div>
+      <div class="features">
+        <span class="feature">High scale</span>
+        <span class="feature">Production</span>
+        <span class="feature">Complex</span>
+      </div>
+    </div>
+    
+    <!-- What's needed -->
+    <div class="option" style="margin-top: 20px; border-color: var(--cyan);">
+      <div class="option-title" style="color: var(--green);">For your 20-agent Discord army:</div>
+      <div class="option-desc">You have options:</div>
+      <div style="font-size: 0.7rem; color: var(--text-dim); line-height: 1.8;">
+        • <strong>Option A:</strong> Use sub-agents now (already works!)<br>
+        • <strong>Option B:</strong> Set up Docker for isolated instances later<br>
+        • <strong>Option C:</strong> Both!
+      </div>
+    </div>
+  </div>
+</body>
+</html>
