@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔬 Architecture Research Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+      --amber: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-dim); font-size: 0.7rem; margin-bottom: 20px; }
+    
+    .tool {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .tool-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--cyan);
+      margin-bottom: 4px;
+    }
+    .tool-link {
+      font-size: 0.7rem;
+      color: var(--purple);
+      text-decoration: none;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .tool-desc {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .tool-use {
+      font-size: 0.65rem;
+      color: var(--green);
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .section-title {
+      font-size: 0.8rem;
+      color: var(--amber);
+      margin: 20px 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔬 Architecture Research Tools</h1>
+    <p class="subtitle">OSS tools to research & map complex architectures</p>
+    
+    <!-- Code Analysis -->
+    <div class="section-title">📊 Code Analysis & Mapping</div>
+    
+    <div class="tool">
+      <div class="tool-name">Swark (VS Code)</div>
+      <a class="tool-link" href="https://github.com/swark-io/swark" target="_blank">github.com/swark-io/swark</a>
+      <div class="tool-desc">AI generates architecture diagrams from code using GitHub Copilot. Analyzes your codebase and draws the structure.</div>
+      <div class="tool-use">→ Use: Analyze any repo → get diagram</div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">CodeScene</div>
+      <a class="tool-link" href="https://github.com/codescene-io/codescene" target="_blank">github.com/codescene-io</a>
+      <div class="tool-desc">Behavioral code analysis. Finds hotspots, complexity trends, and social patterns in code.</div>
+      <div class="tool-use">→ Use: Understand code complexity + ownership</div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">sonarqube</div>
+      <a class="tool-link" href="https://github.com/SonarSource/sonarqube" target="_blank">github.com/SonarSource/sonarqube</a>
+      <div class="tool-desc">Code quality & security. Continuously analyze code to find bugs, vulnerabilities, tech debt.</div>
+      <div class="tool-use">→ Use: Audit code quality</div>
+    </div>
+    
+    <!-- Diagramming -->
+    <div class="section-title">📐 Diagramming & Visualization</div>
+    
+    <div class="tool">
+      <div class="tool-name">Mermaid.js</div>
+      <a class="tool-link" href="https://github.com/mermaid-js/mermaid" target="_blank">github.com/mermaid-js/mermaid</a>
+      <div class="tool-desc">Text-to-diagram. Write diagram code, renders as SVG. GitHub native. Flowcharts, sequence, class, state, ER, Gantt.</div>
+      <div class="tool-use">→ Use: Embed diagrams in docs (I use this!)</div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">Graphviz</div>
+      <a class="tool-link" href="https://github.com/graphviz" target="_blank">github.com/graphviz</a>
+      <div class="tool-desc">Open source graph visualization. Converts description language to images. Industry standard.</div>
+      <div class="tool-use">→ Use: Complex dependency graphs</div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">PlantUML</div>
+      <a class="tool-link" href="https://github.com/plantuml/plantuml" target="_blank">github.com/plantuml/plantuml</a>
+      <div class="tool-desc">Text to UML diagram. All UML types, network, JSON, YAML visualizations. Very powerful.</div>
+      <div class="tool-use">→ Use: Full UML diagrams</div>
+    </div>
+    
+    <!-- Learning -->
+    <div class="section-title">📚 Learning Resources</div>
+    
+    <div class="tool">
+      <div class="tool-name">awesome-software-architecture</div>
+      <a class="tool-link" href="https://github.com/mehdihadeli/awesome-software-architecture" target="_blank">github.com/mehdihadeli/awesome-software-architecture</a>
+      <div class="tool-desc">Curated list of articles, videos, resources to learn software architecture, patterns, principles.</div>
+      <div class="tool-use">→ Use: Learn architecture best practices</div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">awesome-system-design</div>
+      <a class="tool-link" href="https://github.com/madd86/awesome-system-design" target="_blank">github.com/madd86/awesome-system-design</a>
+      <div class="tool-desc">Curated resources for System Design (Distributed Systems). Theory + practice.</div>
+      <div class="tool-use">→ Use: Learn distributed systems</div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">Architecture of Open Source Apps</div>
+      <a class="tool-link" href="https://github.com/kimtth/aosa_pdf" target="_blank">github.com/kimtth/aosa_pdf</a>
+      <div class="tool-desc">Free PDF books analyzing architecture of real open source apps. Volume 1 & 2.</div>
+      <div class="tool-use">→ Use: See how real apps are architected</div>
+    </div>
+    
+    <!-- AI-Powered -->
+    <div class="section-title">🤖 AI-Powered</div>
+    
+    <div class="tool">
+      <div class="tool-name">Eraser (DiagramGPT)</div>
+      <a class="tool-link" href="https://eraser.io" target="_blank">eraser.io</a>
+      <div class="tool-desc">AI generates diagrams from text. Describe what you want → it draws. Cloud architecture, flowcharts, ERD.</div>
+      <div class="tool-use">→ Use: "Draw me a system that does X"</div>
+    </div>
+    
+    <div class="tool">
+      <div class="tool-name">Structurizr</div>
+      <a class="tool-link" href="https://github.com/structurizr" target="_blank">github.com/structurizr</a>
+      <div class="tool-desc">C4 model for architecture. Create multiple views of your system (context, container, component, code).</div>
+      <div class="tool-use">→ Use: Professional architecture docs</div>
+    </div>
+  </div>
+</body>
+</html>
