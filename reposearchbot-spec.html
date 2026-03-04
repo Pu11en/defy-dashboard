@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📋 RepoResearchBot Spec</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: rgba(255,255,255,0.1);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; background: linear-gradient(90deg, #22d3ee, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; }
+    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; color: var(--cyan); margin: 25px 0 12px; }
+    h3 { font-size: 0.9rem; color: var(--purple); margin: 15px 0 8px; }
+    .subtitle { color: var(--text-dim); font-size: 0.75rem; margin-bottom: 25px; }
+    
+    .diagram-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .mermaid { background: #0a0a0f; padding: 15px; border-radius: 8px; display: flex; justify-content: center; }
+    
+    .spec-section { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 15px; }
+    .spec-title { font-weight: 600; color: var(--cyan); margin-bottom: 10px; }
+    .spec-item { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 6px; padding-left: 12px; border-left: 2px solid var(--border); }
+    
+    .links-section { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .link-item { font-size: 0.75rem; color: var(--purple); margin-bottom: 8px; }
+    .link-desc { font-size: 0.7rem; color: var(--text-dim); margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 RepoResearchBot Spec</h1>
+    <p class="subtitle">OpenClaw instance for Discord - GitHub Repo Research</p>
+    
+    <!-- Architecture -->
+    <h2>🏗️ Architecture</h2>
+    <div class="diagram-box">
+      <div class="mermaid">
+graph TB
+      subgraph DISCORD["💬 Discord #repo-research"]
+        U[User]
+        MSG[Message]
+      end
+      
+      subgraph OPENCLAW["📦 OpenClaw Container"]
+        G[Gateway]
+        A[Agent]
+        GITHUB[GitHub API]
+        WEB[Web Search]
+      end
+      
+      U --> MSG --> G
+      G --> A
+      A --> GITHUB
+      A --> WEB
+      A --> MSG
+      
+      style DISCORD fill:#1f2937,color:#fff
+      style OPENCLAW fill:#1e1b4b,color:#fff
+      style G fill:#4c1d95,color:#fff
+      style A fill:#4c1d95,color:#fff
+      end
+    </div>
+    
+    <!-- What it does -->
+    <h2>🎯 What It Does</h2>
+    <div class="spec-section">
+      <div class="spec-title">Core Functions</div>
+      <div class="spec-item">1. Reads spec/idea from Discord channel</div>
+      <div class="spec-item">2. Searches GitHub for relevant repos</div>
+      <div class="spec-item">3. Returns clickable links (formatted for Discord)</div>
+      <div class="spec-item">4. Summarizes each repo (stars, forks, description)</div>
+      <div class="spec-item">5. Later: clone, analyze, customize repos</div>
+    </div>
+    
+    <!-- User Flow -->
+    <h2>👤 User Flow</h2>
+    <div class="diagram-box">
+      <div class="mermaid">
+sequenceDiagram
+      participant User
+      participant Discord
+      participant OpenClaw
+      participant GitHub
+      
+      User->>Discord: "I need a kanban board for marketing"
+      Discord->>OpenClaw: Message received
+      OpenClaw->>GitHub: Search repos
+      GitHub-->>OpenClaw: [repo1, repo2, repo3]
+      OpenClaw->>OpenClaw: Format for Discord
+      OpenClaw->>Discord: 📋 Results:
+      Discord-->>User: Links + summaries
+      end
+      </div>
+    </div>
+    
+    <!-- Tech Stack -->
+    <h2>🛠️ Tech Stack</h2>
+    <div class="spec-section">
+      <div class="spec-item">• OpenClaw (the gateway)</div>
+      <div class="spec-item">• Discord channel as input</div>
+      <div class="spec-item">• GitHub API for search</div>
+      <div class="spec-item">• Web search for research</div>
+      <div class="spec-item">• MiniMax/Grok for understanding</div>
+    </div>
+    
+    <!-- Discord Output Format -->
+    <h2>💬 Discord Output Format</h2>
+    <div class="diagram-box">
+      <div class="mermaid">
+graph LR
+      OUT[Output] --> L1[📋 Title]
+      OUT --> L2[⭐ Stars | 🍴 Forks]
+      OUT --> L3[📝 Description]
+      OUT --> L4[🔗 github.com/...]
+      
+      style OUT fill:#1e3a8a,color:#fff
+      end
+      </div>
+    </div>
+    
+    <!-- Phase 1 -->
+    <h2>📦 Phase 1: Basic Setup</h2>
+    <div class="spec-section">
+      <div class="spec-item">✅ OpenClaw running in Docker</div>
+      <div class="spec-item">✅ Connected to Discord</div>
+      <div class="spec-item">✅ Responds to channel messages</div>
+      <div class="spec-item">✅ Searches GitHub API</div>
+      <div class="spec-item">✅ Returns formatted links</div>
+    </div>
+    
+    <!-- Phase 2 -->
+    <h2>🚀 Phase 2: Enhanced Research</h2>
+    <div class="spec-section">
+      <div class="spec-item">📊 Analyze repo code structure</div>
+      <div class="spec-item">📝 Generate summaries</div>
+      <div class="spec-item">🔍 Deep search capabilities</div>
+      <div class="spec-item">🏷️ Filter by language, stars</div>
+    </div>
+    
+    <!-- Links -->
+    <h2>🔗 Reference Links</h2>
+    <div class="links-section">
+      <div class="link-item"><a href="https://github.com/openclaw/openclaw" target="_blank">github.com/openclaw/openclaw</a></div>
+      <div class="link-desc">Main OpenClaw repo - the gateway we need</div>
+      
+      <div class="link-item"><a href="https://docs.openclaw.ai" target="_blank">docs.openclaw.ai</a></div>
+      <div class="link-desc">Official docs - how to set up</div>
+      
+      <div class="link-item"><a href="https://github.com/SamurAIGPT/awesome-openclaw" target="_blank">github.com/SamurAIGPT/awesome-openclaw</a></div>
+      <div class="link-desc">Awesome OpenClaw - resources, skills, tutorials</div>
+      
+      <div class="link-item"><a href="https://github.com/ErikFinkell/OpenClaw-Discord-Setup" target="_blank">github.com/ErikFinkell/OpenClaw-Discord-Setup</a></div>
+      <div class="link-desc">Discord setup guide specifically</div>
+    </div>
+  </div>
+  
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+  </script>
+</body>
+</html>
