@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎯 Defy's Discord Army - Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.08);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+      --amber: #fbbf24;
+      --red: #ef4444;
+      --pink: #f472b6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--text-dim); font-size: 0.7rem; margin-bottom: 25px; }
+    
+    /* Flow diagram */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .layer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .layer-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .layer-title .icon { font-size: 1rem; }
+    
+    .layer.telegram { border-left: 3px solid var(--cyan); }
+    .layer.defy { border-left: 3px solid var(--purple); }
+    .layer.channels { border-left: 3px solid var(--green); }
+    .layer.agents { border-left: 3px solid var(--amber); }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+    
+    .item {
+      background: var(--surface-elevated);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+    .item-icon { font-size: 1.5rem; margin-bottom: 6px; }
+    .item-name { font-size: 0.75rem; font-weight: 600; margin-bottom: 4px; }
+    .item-desc { font-size: 0.6rem; color: var(--text-dim); }
+    
+    .item.telegram { border-top: 2px solid var(--cyan); }
+    .item.commander { border-top: 2px solid var(--purple); }
+    .item.channel { border-top: 2px solid var(--green); }
+    .item.agent { border-top: 2px solid var(--amber); }
+    .item.agent.active { border-top: 2px solid var(--green); background: rgba(34,197,94,0.1); }
+    
+    .arrow {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      padding: 5px 0;
+    }
+    
+    .stats {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      text-align: center;
+    }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--cyan); }
+    .stat-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; }
+    
+    .info {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 20px;
+    }
+    .info h3 { font-size: 0.8rem; color: var(--cyan); margin-bottom: 10px; }
+    .info p { font-size: 0.7rem; color: var(--text-dim); line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Defy's Discord Army</h1>
+    <p class="subtitle">20 Marketing Agents Architecture</p>
+    
+    <div class="flow">
+      <!-- YOU -->
+      <div class="layer telegram">
+        <div class="layer-title"><span class="icon">📱</span> YOU (Drew)</div>
+        <div class="grid">
+          <div class="item telegram">
+            <div class="item-icon">📱</div>
+            <div class="item-name">Telegram</div>
+            <div class="item-desc">Voice + text to Defy</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="arrow">↓ commands ↓</div>
+      
+      <!-- DEFY -->
+      <div class="layer defy">
+        <div class="layer-title"><span class="icon">🤖</span> COMMANDER - Defy (Me)</div>
+        <div class="grid">
+          <div class="item commander">
+            <div class="item-icon">🤖</div>
+            <div class="item-name">Defy</div>
+            <div class="item-desc">Overall commander<br/>Understands goals</div>
+          </div>
+          <div class="item commander">
+            <div class="item-icon">🧠</div>
+            <div class="item-name">Brain</div>
+            <div class="item-desc">Grok 4.1<br/>2M context</div>
+          </div>
+          <div class="item commander">
+            <div class="item-icon">📋</div>
+            <div class="item-name">Planner</div>
+            <div class="item-desc">Breaks down tasks</div>
+          </div>
+          <div class="item commander">
+            <div class="item-icon">👥</div>
+            <div class="item-name">Dispatcher</div>
+            <div class="item-desc">Spawns agents</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="arrow">↓ assigns ↓</div>
+      
+      <!-- CHANNELS -->
+      <div class="layer channels">
+        <div class="layer-title"><span class="icon">📁</span> DISCORD CHANNELS (20)</div>
+        <div class="grid">
+          <div class="item channel"><div class="item-icon">📢</div><div class="item-name">#defy-general</div><div class="item-desc">Main commands</div></div>
+          <div class="item channel"><div class="item-icon">🐦</div><div class="item-name">#twitter-x</div><div class="item-desc">Twitter agent</div></div>
+          <div class="item channel"><div class="item-icon">📸</div><div class="item-name">#instagram</div><div class="item-desc">IG agent</div></div>
+          <div class="item channel"><div class="item-icon">📺</div><div class="item-name">#youtube</div><div class="item-desc">YT agent</div></div>
+          <div class="item channel"><div class="item-icon">💼</div><div class="item-name">#linkedin</div><div class="item-desc">LinkedIn agent</div></div>
+          <div class="item channel"><div class="item-icon">📧</div><div class="item-name">#email</div><div class="item-desc">Email marketing</div></div>
+          <div class="item channel"><div class="item-icon">🎙️</div><div class="item-name">#podcast</div><div class="item-desc">Podcast promoter</div></div>
+          <div class="item channel"><div class="item-icon">🤝</div><div class="item-name">#outreach</div><div class="item-desc">DM outreach</div></div>
+          <div class="item channel"><div class="item-icon">🔍</div><div class="item-name">#leads</div><div class="item-desc">Lead gen</div></div>
+          <div class="item channel"><div class="item-icon">📝</div><div class="item-name">#content</div><div class="item-desc">Content writer</div></div>
+          <div class="item channel"><div class="item-icon">🎨</div><div class="item-name">#design</div><div class="item-desc">Graphics</div></div>
+          <div class="item channel"><div class="item-icon">🎬</div><div class="item-name">#video</div><div class="item-desc">Video creator</div></div>
+          <div class="item channel"><div class="item-icon">📊</div><div class="item-name">#analytics</div><div class="item-desc">Track metrics</div></div>
+          <div class="item channel"><div class="item-icon">🤖</div><div class="item-name">#ai-tools</div><div class="item-desc">AI research</div></div>
+          <div class="item channel"><div class="item-icon">🔥</div><div class="item-name">#viral</div><div class="item-desc">Trend hunter</div></div>
+          <div class="item channel"><div class="item-icon">💰</div><div class="item-name">#sales</div><div class="item-desc">Sales copy</div></div>
+          <div class="item channel"><div class="item-icon">👥</div><div class="item-name">#community</div><div class="item-desc">Community mgmt</div></div>
+          <div class="item channel"><div class="item-icon">⏰</div><div class="item-name">#scheduler</div><div class="item-desc">Post scheduler</div></div>
+          <div class="item channel"><div class="item-icon">🧪</div><div class="item-name">#testing</div><div class="item-desc">A/B testing</div></div>
+          <div class="item channel"><div class="item-icon">🔄</div><div class="item-name">#automation</div><div class="item-desc">Workflow bot</div></div>
+        </div>
+      </div>
+      
+      <div class="arrow">↓ executes ↓</div>
+      
+      <!-- AGENTS -->
+      <div class="layer agents">
+        <div class="layer-title"><span class="icon">⚡</span> SUB-AGENTS (20 Workers)</div>
+        <div class="grid">
+          <div class="item agent active"><div class="item-icon">🐦</div><div class="item-name">@twittermike</div><div class="item-desc">Tweets</div></div>
+          <div class="item agent active"><div class="item-icon">📸</div><div class="item-name">@instasara</div><div class="item-desc">IG posts</div></div>
+          <div class="item agent active"><div class="item-icon">📺</div><div class="item-name">@ytabot</div><div class="item-desc">YT titles</div></div>
+          <div class="item agent active"><div class="item-icon">💼</div><div class="item-name">@linkedluke</div><div class="item-desc">LI posts</div></div>
+          <div class="item agent active"><div class="item-icon">📧</div><div class="item-name">@emailellie</div><div class="item-desc">Newsletters</div></div>
+          <div class="item agent active"><div class="item-icon">🎙️</div><div class="item-name">@podpat</div><div class="item-desc">Promotes</div></div>
+          <div class="item agent active"><div class="item-icon">🤝</div><div class="item-name">@dm-diana</div><div class="item-desc">DMs people</div></div>
+          <div class="item agent active"><div class="item-icon">🔍</div><div class="item-name">@leadlarry</div><div class="item-desc">Finds leads</div></div>
+          <div class="item agent active"><div class="item-icon">📝</div><div class="item-name">@writerwanda</div><div class="item-desc">Writes</div></div>
+          <div class="item agent active"><div class="item-icon">🎨</div><div class="item-name">@designdan</div><div class="item-desc">Creates graphics</div></div>
+          <div class="item agent active"><div class="item-icon">🎬</div><div class="item-name">@vidvince</div><div class="item-desc">Edits video</div></div>
+          <div class="item agent active"><div class="item-icon">📊</div><div class="item-name">@chartcharlie</div><div class="item-desc">Analytics</div></div>
+          <div class="item agent active"><div class="item-icon">🤖</div><div class="item-name">@airesearch</div><div class="item-desc">Finds tools</div></div>
+          <div class="item agent active"><div class="item-icon">🔥</div><div class="item-name">@trendtracker</div><div class="item-desc">Viral content</div></div>
+          <div class="item agent active"><div class="item-icon">💰</div><div class="item-name">@salessteve</div><div class="item-desc">Sales copy</div></div>
+          <div class="item agent active"><div class="item-icon">👥</div><div class="item-name">@communitycat</div><div class="item-desc">Manages group</div></div>
+          <div class="item agent active"><div class="item-icon">⏰</div><div class="item-name">@scheduler Sue</div><div class="item-desc">Schedules</div></div>
+          <div class="item agent active"><div class="item-icon">🧪</div><div class="item-name">@testertina</div><div class="item-desc">A/B tests</div></div>
+          <div class="item agent active"><div class="item-icon">🔄</div><div class="item-name">@autobot</div><div class="item-desc">Workflows</div></div>
+          <div class="item agent active"><div class="item-icon">📋</div><div class="item-name">@manager</div><div class="item-desc">Oversees all</div></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="stats">
+      <div class="stat"><div class="stat-num">20</div><div class="stat-label">Agents</div></div>
+      <div class="stat"><div class="stat-num">20</div><div class="stat-label">Channels</div></div>
+      <div class="stat"><div class="stat-num">1</div><div class="stat-label">Commander</div></div>
+      <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Possibilities</div></div>
+    </div>
+    
+    <div class="info">
+      <h3>💡 How it works:</h3>
+      <p>1. You tell Defy on Telegram what marketing campaign you want<br>
+      2. Defy breaks it down and dispatches agents to specific channels<br>
+      3. Each agent works in its channel, executing its specialized task<br>
+      4. Results flow back to Defy, who reports to you<br>
+      5. You oversee everything from Telegram - no manual Discord work!</p>
+    </div>
+  </div>
+</body>
+</html>
