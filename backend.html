@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧠 Defy's Backend Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface-elevated: #1a1a24;
+      --border: rgba(255,255,255,0.1);
+      --text: #e4e4e7;
+      --text-dim: #71717a;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --green: #22c55e;
+      --amber: #fbbf24;
+      --red: #ef4444;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { text-align: center; color: var(--text-dim); margin-bottom: 30px; }
+    
+    .layer {
+      margin-bottom: 25px;
+    }
+    .layer-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .layer-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    .layer-input { --accent: var(--cyan); }
+    .layer-process { --accent: var(--purple); }
+    .layer-output { --accent: var(--green); }
+    .layer-storage { --accent: var(--amber); }
+    
+    .layer-title .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+    
+    .box-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+    .box:hover {
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+    .box-icon { font-size: 1.3rem; }
+    .box-name { font-weight: 600; }
+    .box-desc { font-size: 0.7rem; color: var(--text-dim); }
+    
+    .box.full { flex: 1 1 100%; }
+    .box.half { flex: 1 1 45%; }
+    .box.third { flex: 1 1 30%; }
+    
+    .arrow {
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 1.2rem;
+      padding: 5px 0;
+    }
+    
+    .highlight {
+      background: rgba(34,211,238,0.1);
+      border-color: var(--cyan);
+    }
+    
+    .footer { text-align: center; margin-top: 40px; color: var(--text-dim); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Defy's Backend Architecture</h1>
+    <p class="subtitle">How your AI agency system works</p>
+    
+    <!-- INPUT -->
+    <div class="layer layer-input">
+      <div class="layer-title"><div class="dot"></div>📥 INPUT LAYER</div>
+      <div class="box-grid">
+        <div class="box third">
+          <div class="box-icon">💬</div>
+          <div>
+            <div class="box-name">Telegram</div>
+            <div class="box-desc">Your main chat</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">🎤</div>
+          <div>
+            <div class="box-name">Voice Messages</div>
+            <div class="box-desc">Whisper transcription</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">🌐</div>
+          <div>
+            <div class="box-name">Web Search</div>
+            <div class="box-desc">Brave API research</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">🐙</div>
+          <div>
+            <div class="box-name">GitHub</div>
+            <div class="box-desc">gh CLI operations</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">📁</div>
+          <div>
+            <div class="box-name">Files</div>
+            <div class="box-desc">Local file system</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">🌍</div>
+          <div>
+            <div class="box-name">Browser</div>
+            <div class="box-desc">Web automation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <!-- PROCESS -->
+    <div class="layer layer-process">
+      <div class="layer-title"><div class="dot"></div>⚙️ PROCESSING</div>
+      <div class="box-grid">
+        <div class="box half highlight">
+          <div class="box-icon">🤖</div>
+          <div>
+            <div class="box-name">ME (Defy) - MiniMax M2.5</div>
+            <div class="box-desc">Main AI brain</div>
+          </div>
+        </div>
+        <div class="box half highlight">
+          <div class="box-icon">🧠</div>
+          <div>
+            <div class="box-name">Sub-Agents - Grok 4.1</div>
+            <div class="box-desc">2M context parallel workers</div>
+          </div>
+        </div>
+        <div class="box half">
+          <div class="box-icon">💻</div>
+          <div>
+            <div class="box-name">Claude Code</div>
+            <div class="box-desc">Coding tasks</div>
+          </div>
+        </div>
+        <div class="box half">
+          <div class="box-icon">📦</div>
+          <div>
+            <div class="box-name">Skills Engine</div>
+            <div class="box-desc">56 bundled skills</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <!-- OUTPUT -->
+    <div class="layer layer-output">
+      <div class="layer-title"><div class="dot"></div>📤 OUTPUT</div>
+      <div class="box-grid">
+        <div class="box third">
+          <div class="box-icon">💬</div>
+          <div>
+            <div class="box-name">Reply</div>
+            <div class="box-desc">Back to Telegram</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">🖼️</div>
+          <div>
+            <div class="box-name">Visual</div>
+            <div class="box-desc">HTML diagrams</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">🗣️</div>
+          <div>
+            <div class="box-name">Voice</div>
+            <div class="box-desc">TTS output</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">🐙</div>
+          <div>
+            <div class="box-name">GitHub</div>
+            <div class="box-desc">Push, PR, issues</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">📁</div>
+          <div>
+            <div class="box-name">Files</div>
+            <div class="box-desc">Write to disk</div>
+          </div>
+        </div>
+        <div class="box third">
+          <div class="box-icon">🚀</div>
+          <div>
+            <div class="box-name">Deploy</div>
+            <div class="box-desc">Vercel, GitHub Pages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <!-- STORAGE -->
+    <div class="layer layer-storage">
+      <div class="layer-title"><div class="dot"></div>💾 MEMORY & STORAGE</div>
+      <div class="box-grid">
+        <div class="box half">
+          <div class="box-icon">📝</div>
+          <div>
+            <div class="box-name">MEMORY.md</div>
+            <div class="box-desc">Long-term memory</div>
+          </div>
+        </div>
+        <div class="box half">
+          <div class="box-icon">📅</div>
+          <div>
+            <div class="box-name">memory/YYYY-MM-DD</div>
+            <div class="box-desc">Daily logs</div>
+          </div>
+        </div>
+        <div class="box half">
+          <div class="box-icon">👤</div>
+          <div>
+            <div class="box-name">USER.md</div>
+            <div class="box-desc">Your preferences</div>
+          </div>
+        </div>
+        <div class="box half">
+          <div class="box-icon">🤖</div>
+          <div>
+            <div class="box-name">IDENTITY.md</div>
+            <div class="box-desc">My personality</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>🤖 Built by Drew | Powered by OpenClaw</p>
+    </div>
+  </div>
+</body>
+</html>
